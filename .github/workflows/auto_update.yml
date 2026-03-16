@@ -1,41 +1,36 @@
 name: Auto Update IPTV Playlist
 
-# 1. JAM ALARM ROBOT
 on:
   schedule:
-    # Berjalan otomatis setiap 2 jam sekali (bisa diganti sesuai kebutuhan)
     - cron: '0 */2 * * *'
-  workflow_dispatch: # Memungkinkan kita menekan tombol 'Play' secara manual
+  workflow_dispatch:
 
-# 2. TUGAS ROBOT
 jobs:
   build:
-    runs-on: ubuntu-latest # Robot meminjam komputer Linux milik GitHub
+    runs-on: ubuntu-latest
 
     steps:
-      # Langkah 1: Membuka repositori Kapten
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      # Langkah 2: Memasang Python di komputer GitHub
       - name: Setup Python
         uses: actions/setup-python@v3
         with:
           python-version: '3.9'
 
-      # Langkah 3: Menginstall bahan bakar (Library Request)
-      - name: Install Library
-        run: pip install requests
+      # PATCH JURUS 2: Menginstal Playwright dan Chrome Hantu
+      - name: Install Playwright & Dependencies
+        run: |
+          pip install playwright
+          playwright install chromium
 
-      # Langkah 4: MENJALANKAN OTAK ROBOT!
-      - name: Jalankan Scraper
+      - name: Jalankan Scraper (Jurus 2)
         run: python scraper.py
 
-      # Langkah 5: Menyimpan kembali hasil M3U ke dalam GitHub
-      - name: Commit and Push (Simpan Perubahan)
+      - name: Commit and Push
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
           git add .
-          git commit -m "Auto-Update Token IPTV 🔥" || echo "Tidak ada token yang berubah."
+          git commit -m "Auto-Update Token dengan Jurus 2 🔥" || echo "Tidak ada token yang berubah."
           git push
