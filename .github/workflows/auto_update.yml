@@ -36,6 +36,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
-          git add playlist.m3u
+          git add .
           git commit -m "Auto-Update Token IPTV 🔥" || echo "Tidak ada token yang berubah."
           git push
