@@ -1,0 +1,8 @@
+#EXTM3U x-tvg-url="https://epg.provider.com/epg.xml"
+# Update Terakhir: 2026-03-16 06:09:27
+
+#EXTINF:-1 tvg-id="TV3" tvg-logo="https://logo.com/tv3.png" group-title="TV Malaysia", TV3 (Auto-Token)
+https://b-cdn.net/tv3/master.m3u8?token=TOKEN_DARURAT_12345
+
+#EXTINF:-1 tvg-id="TV1" tvg-logo="https://logo.com/tv1.png" group-title="TV Malaysia", TV1 RTM
+https://d25tgymtnqzu8s.cloudfront.net/main/A0jYR3/master.m3u8
